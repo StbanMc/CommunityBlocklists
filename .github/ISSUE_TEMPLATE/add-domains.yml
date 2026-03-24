@@ -1,0 +1,27 @@
+name: Add Domains
+description: Suggest domains to add to a category
+labels: ["enhancement"]
+body:
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: Target category for the domains
+      placeholder: e.g., gamble, spyware, porn
+    validations:
+      required: true
+  - type: textarea
+    id: domains
+    attributes:
+      label: Domains to add
+      description: One domain per line, lowercase, no http prefix
+      placeholder: |
+        malicious-site.com
+        phishing-example.net
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence/Justification
+      description: Why should these domains be added?

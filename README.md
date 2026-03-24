@@ -1,66 +1,177 @@
-# 🛡️ pfSenseSquidGuardLists
+# Community Blocklists
 
-pfSenseSquidGuardLists is a community-driven repository of URL blacklists and whitelists 🌐 for use with SquidGuard in pfSense.
+Community-driven URL/domain blocklists organized by category. Compatible with **pfBlockerNG**, **Pi-hole**, **AdGuard Home**, **OPNsense**, **Unbound**, **dnsmasq**, **SquidGuard**, and any DNS-based filtering solution.
 
-<img width="667" alt="image" src="https://user-images.githubusercontent.com/40925832/232986296-8d242e21-1f18-4b39-9d1f-204746aec655.png">
+> **4,000,000+ domains** across **74 categories**, updated weekly from 5 open sources.
 
+---
 
-## ❓ What is pfSenseSquidGuardLists?
+## Quick Start
 
-This project aims to provide an up-to-date and easy-to-use set of URL blacklists 🚫 and whitelists ✅ to help network administrators using pfSense and SquidGuard filter inappropriate or unsafe content on their networks. The lists are organized into categories 📁 and are maintained by the community, allowing users to collaborate and continually improve the lists.
+### Pi-hole
+Add as Adlist (hosts format):
+```
+https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/hosts/<category>.txt
+```
 
-## 🧩 How does it work?
+### AdGuard Home
+Add as DNS blocklist:
+```
+https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/adguard/<category>.txt
+```
 
-pfSenseSquidGuardLists contains URL blacklists 🚫 and whitelists ✅ organized by categories. Each category has separate domain and URL files to facilitate their configuration in SquidGuard within pfSense.
+### pfBlockerNG (pfSense)
+In Firewall > pfBlockerNG > DNSBL > DNSBL Groups:
+```
+https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/domains/<category>.txt
+```
 
-Users can contribute to the project by adding ➕, removing ➖, or modifying ✏️ entries in the blacklists and whitelists. Periodic updates 🔄 are essential to ensure the lists are effective and accurate.
+### OPNsense (Unbound DNS)
+```
+https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/unbound/<category>.conf
+```
 
-## 🎯 What is it for?
+### dnsmasq
+```
+https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/dnsmasq/<category>.conf
+```
 
-pfSenseSquidGuardLists serves as a resource for network administrators looking to implement content filtering policies in their networks using SquidGuard in pfSense. The blacklists and whitelists in this repository can be used to block 🚫 or allow ✅ access to specific websites or categories of websites.
+### Combined (all categories)
+```
+exports/combined/all-domains.txt   # Plain domains
+exports/combined/all-hosts.txt     # Hosts format
+exports/combined/all-adguard.txt   # AdGuard format
+```
 
-## ⚙️ Configuration
+### SquidGuard (legacy)
+Clone the repo and point SquidGuard to `ListFilter-Squid/BL/`.
 
-To use the lists from pfSenseSquidGuardLists with SquidGuard in pfSense, follow these steps:
+---
 
-1. Clone the repository 📦 or download and extract the project files to your pfSense server.
-2. Configure SquidGuard to use the lists from pfSenseSquidGuardLists. Edit the SquidGuard configuration file (usually accessible through the pfSense web interface) and update the blacklists and whitelists paths with the paths of the downloaded files.
-3. Check and apply the SquidGuard configuration ✅ and restart the Squid service in pfSense through the web interface or using appropriate commands in the command line.
-4. Ensure you keep the lists updated 🔄 using the `update_lists.sh` script included in the `scripts` folder or through your own methods.
+## Available Formats
 
-## 🤝 Contributing
+| Format | Directory | Use case |
+|--------|-----------|----------|
+| Plain domains | `exports/domains/` | pfBlockerNG, generic |
+| Hosts file | `exports/hosts/` | Pi-hole, /etc/hosts |
+| AdGuard | `exports/adguard/` | AdGuard Home |
+| dnsmasq | `exports/dnsmasq/` | dnsmasq, OPNsense |
+| Unbound | `exports/unbound/` | Unbound DNS resolver |
+| Combined | `exports/combined/` | All categories merged |
+| SquidGuard | `ListFilter-Squid/BL/` | Legacy SquidGuard |
 
-We appreciate community collaboration in maintaining and improving the lists in pfSenseSquidGuardLists. If you wish to contribute, please follow the contribution guidelines and make your changes in a separate branch before submitting a pull request.
+---
 
----------------------------------------------------------------------------------------
+## Categories
 
-# 🛡️ pfSenseSquidGuardLists (Español)
+### Security
+| Category | File name | Description |
+|----------|-----------|-------------|
+| Phishing/Scam | `hacking` | Phishing, scam, hacking tools |
+| Malware/Spyware | `spyware` | Malware, spyware, tracking, ransomware, cryptojacking |
+| Fraud | `costtraps` | Fraud, cost traps |
+| Aggressive | `aggressive` | Aggressive/hostile content |
+| Violence | `violence` | Violence, dangerous material |
 
-pfSenseSquidGuardLists es un repositorio comunitario de listas negras y blancas de URLs 🌐 para su uso con SquidGuard en pfSense.
+### Privacy
+| Category | File name | Description |
+|----------|-----------|-------------|
+| Advertising | `adv` | Ads, trackers |
+| VPN/Proxy | `anonvpn` | Anonymous VPN, proxies, DoH |
+| Redirectors | `redirector` | URL redirectors |
+| URL shorteners | `urlshortener` | URL shortening services |
+| Remote control | `remotecontrol` | Remote access tools |
+| Dynamic DNS | `dynamic` | Dynamic DNS services |
 
-## ❓ ¿Qué es pfSenseSquidGuardLists?
+### Adult Content
+| Category | File name | Description |
+|----------|-----------|-------------|
+| Pornography | `porn` | Pornography (1.1M+ domains) |
+| Lingerie | `sex-lingerie` | Lingerie |
+| Dating | `dating` | Dating sites |
 
-Este proyecto tiene como objetivo proporcionar un conjunto actualizado y fácil de usar de listas negras 🚫 y blancas ✅ de URLs para ayudar a los administradores de redes que utilizan pfSense y SquidGuard a filtrar contenido inapropiado o no seguro en sus redes. Las listas están organizadas en categorías 📁 y son mantenidas por la comunidad, lo que permite a los usuarios colaborar y mejorar continuamente las listas.
+### Entertainment
+| Category | File name | Description |
+|----------|-----------|-------------|
+| Gambling | `gamble` | Gambling, betting (238K+ domains) |
+| Online games | `hobby-games-online` | Online games |
+| Movies | `movies` | Movie streaming |
+| Music | `music` | Music streaming |
+| Social networks | `socialnet` | Social networks |
+| Chat | `chat` | Chat platforms |
+| Webmail | `webmail` | Webmail services |
 
-## 🧩 ¿Cómo funciona?
+### Commerce & Finance
+| Category | File name | Description |
+|----------|-----------|-------------|
+| Shopping | `shopping` | Online shopping |
+| Banking | `finance-banking` | Banking |
+| Trading/Crypto | `finance-trading` | Trading, cryptocurrency |
 
-pfSenseSquidGuardLists contiene listas negras 🚫 y blancas ✅ de URLs organizadas por categorías. Cada categoría tiene archivos de dominios y URLs separados para facilitar su configuración en SquidGuard dentro de pfSense.
+### Other
+| Category | File name | Description |
+|----------|-----------|-------------|
+| News | `news` | News, press |
+| Warez/Piracy | `warez` | Piracy, warez |
+| Drugs | `tracker-drugs` | Drug-related |
+| Job search | `jobsearch` | Job search sites |
 
-Los usuarios pueden contribuir al proyecto agregando ➕, eliminando ➖ o modificando ✏️ entradas en las listas negras y blancas. Las actualizaciones periódicas 🔄 son esenciales para garantizar que las listas sean efectivas y precisas.
+See all 74 categories in `ListFilter-Squid/BL/`.
 
-## 🎯 ¿Para qué sirve?
+---
 
-pfSenseSquidGuardLists sirve como un recurso para administradores de redes que buscan implementar políticas de filtrado de contenido en sus redes utilizando SquidGuard en pfSense. Las listas negras y blancas de este repositorio pueden utilizarse para bloquear 🚫 o permitir ✅ el acceso a sitios web específicos o categorías de sitios web.
+## Data Sources
 
-## ⚙️ Configuración
+| Source | Updated | What it provides |
+|--------|---------|-----------------|
+| [UT1 Blacklists](https://dsi.ut-capitole.fr/blacklists/) (Univ. Toulouse) | Daily | 40+ categorized lists |
+| [BlockListProject](https://blocklistproject.github.io/Lists/) | Regular | ads, malware, phishing, gambling, porn, drugs, piracy, scam, tracking |
+| [Hagezi DNS Blocklists](https://github.com/hagezi/dns-blocklists) | Regular | gambling, DoH |
+| [StevenBlack/hosts](https://github.com/StevenBlack/hosts) | Regular | unified ads/malware |
+| [Phishing Army](https://phishing.army/) | Daily | phishing domains |
 
-Para utilizar las listas de pfSenseSquidGuardLists con SquidGuard en pfSense, sigue estos pasos:
+---
 
-1. Clona el repositorio 📦 o descarga y extrae los archivos del proyecto en tu servidor pfSense.
-2. Configura SquidGuard para utilizar las listas de pfSenseSquidGuardLists. Edita el archivo de configuración de SquidGuard (generalmente accesible a través de la interfaz web de pfSense) y actualiza las rutas de las listas negras y blancas con las rutas de los archivos descargados.
-3. Comprueba y aplica la configuración de SquidGuard ✅ y reinicia el servicio de Squid en pfSense a través de la interfaz web o utilizando comandos apropiados en la línea de comandos.
-4. Asegúrate de mantener las listas actualizadas 🔄 utilizando el script `update_lists.sh` incluido en la carpeta `scripts` o mediante tus propios métodos.
+## Automated Updates
 
-## 🤝 Contribuir
+GitHub Actions updates the lists **every Monday** automatically:
+1. Downloads latest data from all upstream sources
+2. Merges with existing lists (additive, no domains lost)
+3. Deduplicates and sorts
+4. Exports to all formats
+5. Auto-commits
 
-Agradecemos la colaboración de la comunidad para mantener y mejorar las listas de pfSenseSquidGuardLists. Si deseas contribuir, por favor sigue las pautas de contribución y realiza tus cambios en una rama separada antes de enviar una solicitud de extracción (pull request).
+Trigger manually from the **Actions** tab anytime.
+
+### Run locally
+```bash
+bash scripts/update_lists.sh      # Update from sources
+bash scripts/export_formats.sh    # Export to all formats
+```
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+- Add domains to categories via Pull Request
+- Report false positives via Issues
+- Suggest new categories or data sources
+- Improve scripts or add export formats
+
+---
+
+## Stats
+
+- **4,000,000+** domains
+- **74** categories
+- **6** export formats
+- **5** upstream sources
+- **Weekly** automated updates
+
+---
+
+## License
+
+Open source. See [LICENSE](LICENSE).

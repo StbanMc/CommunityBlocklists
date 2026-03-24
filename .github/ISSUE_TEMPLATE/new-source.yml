@@ -1,0 +1,29 @@
+name: Suggest New Source
+description: Suggest a new upstream data source
+labels: ["new-source"]
+body:
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: URL of the blocklist source
+    validations:
+      required: true
+  - type: input
+    id: source_name
+    attributes:
+      label: Source Name
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does this source provide and why should we add it?
+    validations:
+      required: true
+  - type: input
+    id: categories
+    attributes:
+      label: Categories covered
+      placeholder: e.g., malware, phishing, ads

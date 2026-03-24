@@ -1,0 +1,27 @@
+name: False Positive Report
+description: Report a legitimate domain that is incorrectly blocked
+labels: ["false-positive"]
+body:
+  - type: input
+    id: domain
+    attributes:
+      label: Domain
+      description: The domain that is incorrectly blocked
+      placeholder: example.com
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: Which category contains this domain
+      placeholder: e.g., spyware, hacking, adv
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why is this a false positive?
+      description: Explain why this domain should not be blocked
+    validations:
+      required: true
