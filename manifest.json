@@ -1,0 +1,931 @@
+{
+  "name": "CommunityBlocklists",
+  "version": "2026.05.10",
+  "lastUpdate": "2026-05-10T20:24:33Z",
+  "totalCategories": 74,
+  "totalDomains": 4012481,
+  "combinedUniqueDomains": 3587058,
+  "formats": ["domains", "hosts", "adguard", "dnsmasq", "unbound", "combined"],
+  "baseUrls": {
+    "github": "https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main",
+    "jsdelivr": "https://cdn.jsdelivr.net/gh/StbanMc/CommunityBlocklists@main"
+  },
+  "sources": [
+    {
+      "name": "UT1 Blacklists",
+      "owner": "Université Toulouse 1",
+      "url": "https://dsi.ut-capitole.fr/blacklists/",
+      "categories": "40+"
+    },
+    {
+      "name": "The Block List Project",
+      "url": "https://blocklistproject.github.io/Lists/",
+      "categories": "ads, malware, phishing, gambling, porn, drugs, piracy, scam, tracking, ransomware, fraud, crypto"
+    },
+    {
+      "name": "Hagezi DNS Blocklists",
+      "url": "https://github.com/hagezi/dns-blocklists",
+      "categories": "gambling, DoH"
+    },
+    {
+      "name": "StevenBlack/hosts",
+      "url": "https://github.com/StevenBlack/hosts",
+      "categories": "unified ads"
+    },
+    {
+      "name": "Phishing Army",
+      "url": "https://phishing.army/",
+      "categories": "phishing"
+    }
+  ],
+  "categories": [
+    {
+      "id": "adv",
+      "domains": 227271,
+      "size": 5213997,
+      "formats": {
+        "domains": "exports/domains/adv.txt",
+        "hosts": "exports/hosts/adv.txt",
+        "adguard": "exports/adguard/adv.txt",
+        "dnsmasq": "exports/dnsmasq/adv.conf",
+        "unbound": "exports/unbound/adv.conf"
+      }
+    },
+    {
+      "id": "aggressive",
+      "domains": 605,
+      "size": 9738,
+      "formats": {
+        "domains": "exports/domains/aggressive.txt",
+        "hosts": "exports/hosts/aggressive.txt",
+        "adguard": "exports/adguard/aggressive.txt",
+        "dnsmasq": "exports/dnsmasq/aggressive.conf",
+        "unbound": "exports/unbound/aggressive.conf"
+      }
+    },
+    {
+      "id": "alcohol",
+      "domains": 659,
+      "size": 12459,
+      "formats": {
+        "domains": "exports/domains/alcohol.txt",
+        "hosts": "exports/hosts/alcohol.txt",
+        "adguard": "exports/adguard/alcohol.txt",
+        "dnsmasq": "exports/dnsmasq/alcohol.conf",
+        "unbound": "exports/unbound/alcohol.conf"
+      }
+    },
+    {
+      "id": "anonvpn",
+      "domains": 16480,
+      "size": 378653,
+      "formats": {
+        "domains": "exports/domains/anonvpn.txt",
+        "hosts": "exports/hosts/anonvpn.txt",
+        "adguard": "exports/adguard/anonvpn.txt",
+        "dnsmasq": "exports/dnsmasq/anonvpn.conf",
+        "unbound": "exports/unbound/anonvpn.conf"
+      }
+    },
+    {
+      "id": "automobile-bikes",
+      "domains": 956,
+      "size": 19411,
+      "formats": {
+        "domains": "exports/domains/automobile-bikes.txt",
+        "hosts": "exports/hosts/automobile-bikes.txt",
+        "adguard": "exports/adguard/automobile-bikes.txt",
+        "dnsmasq": "exports/dnsmasq/automobile-bikes.conf",
+        "unbound": "exports/unbound/automobile-bikes.conf"
+      }
+    },
+    {
+      "id": "automobile-boats",
+      "domains": 271,
+      "size": 4829,
+      "formats": {
+        "domains": "exports/domains/automobile-boats.txt",
+        "hosts": "exports/hosts/automobile-boats.txt",
+        "adguard": "exports/adguard/automobile-boats.txt",
+        "dnsmasq": "exports/dnsmasq/automobile-boats.conf",
+        "unbound": "exports/unbound/automobile-boats.conf"
+      }
+    },
+    {
+      "id": "automobile-cars",
+      "domains": 3329,
+      "size": 58347,
+      "formats": {
+        "domains": "exports/domains/automobile-cars.txt",
+        "hosts": "exports/hosts/automobile-cars.txt",
+        "adguard": "exports/adguard/automobile-cars.txt",
+        "dnsmasq": "exports/dnsmasq/automobile-cars.conf",
+        "unbound": "exports/unbound/automobile-cars.conf"
+      }
+    },
+    {
+      "id": "automobile-planes",
+      "domains": 686,
+      "size": 12659,
+      "formats": {
+        "domains": "exports/domains/automobile-planes.txt",
+        "hosts": "exports/hosts/automobile-planes.txt",
+        "adguard": "exports/adguard/automobile-planes.txt",
+        "dnsmasq": "exports/dnsmasq/automobile-planes.conf",
+        "unbound": "exports/unbound/automobile-planes.conf"
+      }
+    },
+    {
+      "id": "chat",
+      "domains": 15150,
+      "size": 257049,
+      "formats": {
+        "domains": "exports/domains/chat.txt",
+        "hosts": "exports/hosts/chat.txt",
+        "adguard": "exports/adguard/chat.txt",
+        "dnsmasq": "exports/dnsmasq/chat.conf",
+        "unbound": "exports/unbound/chat.conf"
+      }
+    },
+    {
+      "id": "costtraps",
+      "domains": 197553,
+      "size": 4611655,
+      "formats": {
+        "domains": "exports/domains/costtraps.txt",
+        "hosts": "exports/hosts/costtraps.txt",
+        "adguard": "exports/adguard/costtraps.txt",
+        "dnsmasq": "exports/dnsmasq/costtraps.conf",
+        "unbound": "exports/unbound/costtraps.conf"
+      }
+    },
+    {
+      "id": "dating",
+      "domains": 9120,
+      "size": 168023,
+      "formats": {
+        "domains": "exports/domains/dating.txt",
+        "hosts": "exports/hosts/dating.txt",
+        "adguard": "exports/adguard/dating.txt",
+        "dnsmasq": "exports/dnsmasq/dating.conf",
+        "unbound": "exports/unbound/dating.conf"
+      }
+    },
+    {
+      "id": "downloads",
+      "domains": 8536,
+      "size": 176173,
+      "formats": {
+        "domains": "exports/domains/downloads.txt",
+        "hosts": "exports/hosts/downloads.txt",
+        "adguard": "exports/adguard/downloads.txt",
+        "dnsmasq": "exports/dnsmasq/downloads.conf",
+        "unbound": "exports/unbound/downloads.conf"
+      }
+    },
+    {
+      "id": "dynamic",
+      "domains": 2700,
+      "size": 43464,
+      "formats": {
+        "domains": "exports/domains/dynamic.txt",
+        "hosts": "exports/hosts/dynamic.txt",
+        "adguard": "exports/adguard/dynamic.txt",
+        "dnsmasq": "exports/dnsmasq/dynamic.conf",
+        "unbound": "exports/unbound/dynamic.conf"
+      }
+    },
+    {
+      "id": "education-schools",
+      "domains": 9911,
+      "size": 146545,
+      "formats": {
+        "domains": "exports/domains/education-schools.txt",
+        "hosts": "exports/hosts/education-schools.txt",
+        "adguard": "exports/adguard/education-schools.txt",
+        "dnsmasq": "exports/dnsmasq/education-schools.conf",
+        "unbound": "exports/unbound/education-schools.conf"
+      }
+    },
+    {
+      "id": "finance-banking",
+      "domains": 9745,
+      "size": 158095,
+      "formats": {
+        "domains": "exports/domains/finance-banking.txt",
+        "hosts": "exports/hosts/finance-banking.txt",
+        "adguard": "exports/adguard/finance-banking.txt",
+        "dnsmasq": "exports/dnsmasq/finance-banking.conf",
+        "unbound": "exports/unbound/finance-banking.conf"
+      }
+    },
+    {
+      "id": "finance-insurance",
+      "domains": 3148,
+      "size": 74002,
+      "formats": {
+        "domains": "exports/domains/finance-insurance.txt",
+        "hosts": "exports/hosts/finance-insurance.txt",
+        "adguard": "exports/adguard/finance-insurance.txt",
+        "dnsmasq": "exports/dnsmasq/finance-insurance.conf",
+        "unbound": "exports/unbound/finance-insurance.conf"
+      }
+    },
+    {
+      "id": "finance-moneylending",
+      "domains": 3838,
+      "size": 82927,
+      "formats": {
+        "domains": "exports/domains/finance-moneylending.txt",
+        "hosts": "exports/hosts/finance-moneylending.txt",
+        "adguard": "exports/adguard/finance-moneylending.txt",
+        "dnsmasq": "exports/dnsmasq/finance-moneylending.conf",
+        "unbound": "exports/unbound/finance-moneylending.conf"
+      }
+    },
+    {
+      "id": "finance-other",
+      "domains": 1141,
+      "size": 22266,
+      "formats": {
+        "domains": "exports/domains/finance-other.txt",
+        "hosts": "exports/hosts/finance-other.txt",
+        "adguard": "exports/adguard/finance-other.txt",
+        "dnsmasq": "exports/dnsmasq/finance-other.conf",
+        "unbound": "exports/unbound/finance-other.conf"
+      }
+    },
+    {
+      "id": "finance-realestate",
+      "domains": 1397,
+      "size": 27320,
+      "formats": {
+        "domains": "exports/domains/finance-realestate.txt",
+        "hosts": "exports/hosts/finance-realestate.txt",
+        "adguard": "exports/adguard/finance-realestate.txt",
+        "dnsmasq": "exports/dnsmasq/finance-realestate.conf",
+        "unbound": "exports/unbound/finance-realestate.conf"
+      }
+    },
+    {
+      "id": "finance-trading",
+      "domains": 25249,
+      "size": 492526,
+      "formats": {
+        "domains": "exports/domains/finance-trading.txt",
+        "hosts": "exports/hosts/finance-trading.txt",
+        "adguard": "exports/adguard/finance-trading.txt",
+        "dnsmasq": "exports/dnsmasq/finance-trading.conf",
+        "unbound": "exports/unbound/finance-trading.conf"
+      }
+    },
+    {
+      "id": "fortunetelling",
+      "domains": 1087,
+      "size": 21222,
+      "formats": {
+        "domains": "exports/domains/fortunetelling.txt",
+        "hosts": "exports/hosts/fortunetelling.txt",
+        "adguard": "exports/adguard/fortunetelling.txt",
+        "dnsmasq": "exports/dnsmasq/fortunetelling.conf",
+        "unbound": "exports/unbound/fortunetelling.conf"
+      }
+    },
+    {
+      "id": "forum",
+      "domains": 8171,
+      "size": 156489,
+      "formats": {
+        "domains": "exports/domains/forum.txt",
+        "hosts": "exports/hosts/forum.txt",
+        "adguard": "exports/adguard/forum.txt",
+        "dnsmasq": "exports/dnsmasq/forum.conf",
+        "unbound": "exports/unbound/forum.conf"
+      }
+    },
+    {
+      "id": "gamble",
+      "domains": 238816,
+      "size": 4121329,
+      "formats": {
+        "domains": "exports/domains/gamble.txt",
+        "hosts": "exports/hosts/gamble.txt",
+        "adguard": "exports/adguard/gamble.txt",
+        "dnsmasq": "exports/dnsmasq/gamble.conf",
+        "unbound": "exports/unbound/gamble.conf"
+      }
+    },
+    {
+      "id": "government",
+      "domains": 642,
+      "size": 9758,
+      "formats": {
+        "domains": "exports/domains/government.txt",
+        "hosts": "exports/hosts/government.txt",
+        "adguard": "exports/adguard/government.txt",
+        "dnsmasq": "exports/dnsmasq/government.conf",
+        "unbound": "exports/unbound/government.conf"
+      }
+    },
+    {
+      "id": "hacking",
+      "domains": 485227,
+      "size": 10660305,
+      "formats": {
+        "domains": "exports/domains/hacking.txt",
+        "hosts": "exports/hosts/hacking.txt",
+        "adguard": "exports/adguard/hacking.txt",
+        "dnsmasq": "exports/dnsmasq/hacking.conf",
+        "unbound": "exports/unbound/hacking.conf"
+      }
+    },
+    {
+      "id": "hobby-cooking",
+      "domains": 688,
+      "size": 14766,
+      "formats": {
+        "domains": "exports/domains/hobby-cooking.txt",
+        "hosts": "exports/hosts/hobby-cooking.txt",
+        "adguard": "exports/adguard/hobby-cooking.txt",
+        "dnsmasq": "exports/dnsmasq/hobby-cooking.conf",
+        "unbound": "exports/unbound/hobby-cooking.conf"
+      }
+    },
+    {
+      "id": "hobby-games-misc",
+      "domains": 2054,
+      "size": 38039,
+      "formats": {
+        "domains": "exports/domains/hobby-games-misc.txt",
+        "hosts": "exports/hosts/hobby-games-misc.txt",
+        "adguard": "exports/adguard/hobby-games-misc.txt",
+        "dnsmasq": "exports/dnsmasq/hobby-games-misc.conf",
+        "unbound": "exports/unbound/hobby-games-misc.conf"
+      }
+    },
+    {
+      "id": "hobby-games-online",
+      "domains": 43693,
+      "size": 764798,
+      "formats": {
+        "domains": "exports/domains/hobby-games-online.txt",
+        "hosts": "exports/hosts/hobby-games-online.txt",
+        "adguard": "exports/adguard/hobby-games-online.txt",
+        "dnsmasq": "exports/dnsmasq/hobby-games-online.conf",
+        "unbound": "exports/unbound/hobby-games-online.conf"
+      }
+    },
+    {
+      "id": "hobby-gardening",
+      "domains": 804,
+      "size": 16083,
+      "formats": {
+        "domains": "exports/domains/hobby-gardening.txt",
+        "hosts": "exports/hosts/hobby-gardening.txt",
+        "adguard": "exports/adguard/hobby-gardening.txt",
+        "dnsmasq": "exports/dnsmasq/hobby-gardening.conf",
+        "unbound": "exports/unbound/hobby-gardening.conf"
+      }
+    },
+    {
+      "id": "hobby-pets",
+      "domains": 19096,
+      "size": 369032,
+      "formats": {
+        "domains": "exports/domains/hobby-pets.txt",
+        "hosts": "exports/hosts/hobby-pets.txt",
+        "adguard": "exports/adguard/hobby-pets.txt",
+        "dnsmasq": "exports/dnsmasq/hobby-pets.conf",
+        "unbound": "exports/unbound/hobby-pets.conf"
+      }
+    },
+    {
+      "id": "homestyle",
+      "domains": 308,
+      "size": 5743,
+      "formats": {
+        "domains": "exports/domains/homestyle.txt",
+        "hosts": "exports/hosts/homestyle.txt",
+        "adguard": "exports/adguard/homestyle.txt",
+        "dnsmasq": "exports/dnsmasq/homestyle.conf",
+        "unbound": "exports/unbound/homestyle.conf"
+      }
+    },
+    {
+      "id": "hospitals",
+      "domains": 1636,
+      "size": 34848,
+      "formats": {
+        "domains": "exports/domains/hospitals.txt",
+        "hosts": "exports/hosts/hospitals.txt",
+        "adguard": "exports/adguard/hospitals.txt",
+        "dnsmasq": "exports/dnsmasq/hospitals.conf",
+        "unbound": "exports/unbound/hospitals.conf"
+      }
+    },
+    {
+      "id": "imagehosting",
+      "domains": 1520,
+      "size": 23218,
+      "formats": {
+        "domains": "exports/domains/imagehosting.txt",
+        "hosts": "exports/hosts/imagehosting.txt",
+        "adguard": "exports/adguard/imagehosting.txt",
+        "dnsmasq": "exports/dnsmasq/imagehosting.conf",
+        "unbound": "exports/unbound/imagehosting.conf"
+      }
+    },
+    {
+      "id": "isp",
+      "domains": 858,
+      "size": 12335,
+      "formats": {
+        "domains": "exports/domains/isp.txt",
+        "hosts": "exports/hosts/isp.txt",
+        "adguard": "exports/adguard/isp.txt",
+        "dnsmasq": "exports/dnsmasq/isp.conf",
+        "unbound": "exports/unbound/isp.conf"
+      }
+    },
+    {
+      "id": "jobsearch",
+      "domains": 64704,
+      "size": 1305069,
+      "formats": {
+        "domains": "exports/domains/jobsearch.txt",
+        "hosts": "exports/hosts/jobsearch.txt",
+        "adguard": "exports/adguard/jobsearch.txt",
+        "dnsmasq": "exports/dnsmasq/jobsearch.conf",
+        "unbound": "exports/unbound/jobsearch.conf"
+      }
+    },
+    {
+      "id": "library",
+      "domains": 235,
+      "size": 4032,
+      "formats": {
+        "domains": "exports/domains/library.txt",
+        "hosts": "exports/hosts/library.txt",
+        "adguard": "exports/adguard/library.txt",
+        "dnsmasq": "exports/dnsmasq/library.conf",
+        "unbound": "exports/unbound/library.conf"
+      }
+    },
+    {
+      "id": "military",
+      "domains": 269,
+      "size": 4186,
+      "formats": {
+        "domains": "exports/domains/military.txt",
+        "hosts": "exports/hosts/military.txt",
+        "adguard": "exports/adguard/military.txt",
+        "dnsmasq": "exports/dnsmasq/military.conf",
+        "unbound": "exports/unbound/military.conf"
+      }
+    },
+    {
+      "id": "models",
+      "domains": 1956,
+      "size": 39727,
+      "formats": {
+        "domains": "exports/domains/models.txt",
+        "hosts": "exports/hosts/models.txt",
+        "adguard": "exports/adguard/models.txt",
+        "dnsmasq": "exports/dnsmasq/models.conf",
+        "unbound": "exports/unbound/models.conf"
+      }
+    },
+    {
+      "id": "movies",
+      "domains": 6151,
+      "size": 111001,
+      "formats": {
+        "domains": "exports/domains/movies.txt",
+        "hosts": "exports/hosts/movies.txt",
+        "adguard": "exports/adguard/movies.txt",
+        "dnsmasq": "exports/dnsmasq/movies.conf",
+        "unbound": "exports/unbound/movies.conf"
+      }
+    },
+    {
+      "id": "music",
+      "domains": 10114,
+      "size": 188383,
+      "formats": {
+        "domains": "exports/domains/music.txt",
+        "hosts": "exports/hosts/music.txt",
+        "adguard": "exports/adguard/music.txt",
+        "dnsmasq": "exports/dnsmasq/music.conf",
+        "unbound": "exports/unbound/music.conf"
+      }
+    },
+    {
+      "id": "news",
+      "domains": 47049,
+      "size": 799394,
+      "formats": {
+        "domains": "exports/domains/news.txt",
+        "hosts": "exports/hosts/news.txt",
+        "adguard": "exports/adguard/news.txt",
+        "dnsmasq": "exports/dnsmasq/news.conf",
+        "unbound": "exports/unbound/news.conf"
+      }
+    },
+    {
+      "id": "podcasts",
+      "domains": 137,
+      "size": 2718,
+      "formats": {
+        "domains": "exports/domains/podcasts.txt",
+        "hosts": "exports/hosts/podcasts.txt",
+        "adguard": "exports/adguard/podcasts.txt",
+        "dnsmasq": "exports/dnsmasq/podcasts.conf",
+        "unbound": "exports/unbound/podcasts.conf"
+      }
+    },
+    {
+      "id": "politics",
+      "domains": 1368,
+      "size": 21999,
+      "formats": {
+        "domains": "exports/domains/politics.txt",
+        "hosts": "exports/hosts/politics.txt",
+        "adguard": "exports/adguard/politics.txt",
+        "dnsmasq": "exports/dnsmasq/politics.conf",
+        "unbound": "exports/unbound/politics.conf"
+      }
+    },
+    {
+      "id": "porn",
+      "domains": 1116760,
+      "size": 22647554,
+      "formats": {
+        "domains": "exports/domains/porn.txt",
+        "hosts": "exports/hosts/porn.txt",
+        "adguard": "exports/adguard/porn.txt",
+        "dnsmasq": "exports/dnsmasq/porn.conf",
+        "unbound": "exports/unbound/porn.conf"
+      }
+    },
+    {
+      "id": "radiotv",
+      "domains": 4709,
+      "size": 70980,
+      "formats": {
+        "domains": "exports/domains/radiotv.txt",
+        "hosts": "exports/hosts/radiotv.txt",
+        "adguard": "exports/adguard/radiotv.txt",
+        "dnsmasq": "exports/dnsmasq/radiotv.conf",
+        "unbound": "exports/unbound/radiotv.conf"
+      }
+    },
+    {
+      "id": "recreation-humor",
+      "domains": 984,
+      "size": 17445,
+      "formats": {
+        "domains": "exports/domains/recreation-humor.txt",
+        "hosts": "exports/hosts/recreation-humor.txt",
+        "adguard": "exports/adguard/recreation-humor.txt",
+        "dnsmasq": "exports/dnsmasq/recreation-humor.conf",
+        "unbound": "exports/unbound/recreation-humor.conf"
+      }
+    },
+    {
+      "id": "recreation-martialarts",
+      "domains": 2131,
+      "size": 44259,
+      "formats": {
+        "domains": "exports/domains/recreation-martialarts.txt",
+        "hosts": "exports/hosts/recreation-martialarts.txt",
+        "adguard": "exports/adguard/recreation-martialarts.txt",
+        "dnsmasq": "exports/dnsmasq/recreation-martialarts.conf",
+        "unbound": "exports/unbound/recreation-martialarts.conf"
+      }
+    },
+    {
+      "id": "recreation-restaurants",
+      "domains": 1424,
+      "size": 27659,
+      "formats": {
+        "domains": "exports/domains/recreation-restaurants.txt",
+        "hosts": "exports/hosts/recreation-restaurants.txt",
+        "adguard": "exports/adguard/recreation-restaurants.txt",
+        "dnsmasq": "exports/dnsmasq/recreation-restaurants.conf",
+        "unbound": "exports/unbound/recreation-restaurants.conf"
+      }
+    },
+    {
+      "id": "recreation-sports",
+      "domains": 135169,
+      "size": 2553398,
+      "formats": {
+        "domains": "exports/domains/recreation-sports.txt",
+        "hosts": "exports/hosts/recreation-sports.txt",
+        "adguard": "exports/adguard/recreation-sports.txt",
+        "dnsmasq": "exports/dnsmasq/recreation-sports.conf",
+        "unbound": "exports/unbound/recreation-sports.conf"
+      }
+    },
+    {
+      "id": "recreation-travel",
+      "domains": 142250,
+      "size": 2792549,
+      "formats": {
+        "domains": "exports/domains/recreation-travel.txt",
+        "hosts": "exports/hosts/recreation-travel.txt",
+        "adguard": "exports/adguard/recreation-travel.txt",
+        "dnsmasq": "exports/dnsmasq/recreation-travel.conf",
+        "unbound": "exports/unbound/recreation-travel.conf"
+      }
+    },
+    {
+      "id": "recreation-wellness",
+      "domains": 702,
+      "size": 14449,
+      "formats": {
+        "domains": "exports/domains/recreation-wellness.txt",
+        "hosts": "exports/hosts/recreation-wellness.txt",
+        "adguard": "exports/adguard/recreation-wellness.txt",
+        "dnsmasq": "exports/dnsmasq/recreation-wellness.conf",
+        "unbound": "exports/unbound/recreation-wellness.conf"
+      }
+    },
+    {
+      "id": "redirector",
+      "domains": 141829,
+      "size": 2384848,
+      "formats": {
+        "domains": "exports/domains/redirector.txt",
+        "hosts": "exports/hosts/redirector.txt",
+        "adguard": "exports/adguard/redirector.txt",
+        "dnsmasq": "exports/dnsmasq/redirector.conf",
+        "unbound": "exports/unbound/redirector.conf"
+      }
+    },
+    {
+      "id": "religion",
+      "domains": 9377,
+      "size": 209058,
+      "formats": {
+        "domains": "exports/domains/religion.txt",
+        "hosts": "exports/hosts/religion.txt",
+        "adguard": "exports/adguard/religion.txt",
+        "dnsmasq": "exports/dnsmasq/religion.conf",
+        "unbound": "exports/unbound/religion.conf"
+      }
+    },
+    {
+      "id": "remotecontrol",
+      "domains": 189,
+      "size": 3145,
+      "formats": {
+        "domains": "exports/domains/remotecontrol.txt",
+        "hosts": "exports/hosts/remotecontrol.txt",
+        "adguard": "exports/adguard/remotecontrol.txt",
+        "dnsmasq": "exports/dnsmasq/remotecontrol.conf",
+        "unbound": "exports/unbound/remotecontrol.conf"
+      }
+    },
+    {
+      "id": "ringtones",
+      "domains": 448,
+      "size": 8719,
+      "formats": {
+        "domains": "exports/domains/ringtones.txt",
+        "hosts": "exports/hosts/ringtones.txt",
+        "adguard": "exports/adguard/ringtones.txt",
+        "dnsmasq": "exports/dnsmasq/ringtones.conf",
+        "unbound": "exports/unbound/ringtones.conf"
+      }
+    },
+    {
+      "id": "science-astronomy",
+      "domains": 1020,
+      "size": 20389,
+      "formats": {
+        "domains": "exports/domains/science-astronomy.txt",
+        "hosts": "exports/hosts/science-astronomy.txt",
+        "adguard": "exports/adguard/science-astronomy.txt",
+        "dnsmasq": "exports/dnsmasq/science-astronomy.conf",
+        "unbound": "exports/unbound/science-astronomy.conf"
+      }
+    },
+    {
+      "id": "science-chemistry",
+      "domains": 217,
+      "size": 4698,
+      "formats": {
+        "domains": "exports/domains/science-chemistry.txt",
+        "hosts": "exports/hosts/science-chemistry.txt",
+        "adguard": "exports/adguard/science-chemistry.txt",
+        "dnsmasq": "exports/dnsmasq/science-chemistry.conf",
+        "unbound": "exports/unbound/science-chemistry.conf"
+      }
+    },
+    {
+      "id": "searchengines",
+      "domains": 1182,
+      "size": 18438,
+      "formats": {
+        "domains": "exports/domains/searchengines.txt",
+        "hosts": "exports/hosts/searchengines.txt",
+        "adguard": "exports/adguard/searchengines.txt",
+        "dnsmasq": "exports/dnsmasq/searchengines.conf",
+        "unbound": "exports/unbound/searchengines.conf"
+      }
+    },
+    {
+      "id": "sex-education",
+      "domains": 179,
+      "size": 3544,
+      "formats": {
+        "domains": "exports/domains/sex-education.txt",
+        "hosts": "exports/hosts/sex-education.txt",
+        "adguard": "exports/adguard/sex-education.txt",
+        "dnsmasq": "exports/dnsmasq/sex-education.conf",
+        "unbound": "exports/unbound/sex-education.conf"
+      }
+    },
+    {
+      "id": "sex-lingerie",
+      "domains": 1372,
+      "size": 29490,
+      "formats": {
+        "domains": "exports/domains/sex-lingerie.txt",
+        "hosts": "exports/hosts/sex-lingerie.txt",
+        "adguard": "exports/adguard/sex-lingerie.txt",
+        "dnsmasq": "exports/dnsmasq/sex-lingerie.conf",
+        "unbound": "exports/unbound/sex-lingerie.conf"
+      }
+    },
+    {
+      "id": "shopping",
+      "domains": 188829,
+      "size": 3418833,
+      "formats": {
+        "domains": "exports/domains/shopping.txt",
+        "hosts": "exports/hosts/shopping.txt",
+        "adguard": "exports/adguard/shopping.txt",
+        "dnsmasq": "exports/dnsmasq/shopping.conf",
+        "unbound": "exports/unbound/shopping.conf"
+      }
+    },
+    {
+      "id": "socialnet",
+      "domains": 1457,
+      "size": 21334,
+      "formats": {
+        "domains": "exports/domains/socialnet.txt",
+        "hosts": "exports/hosts/socialnet.txt",
+        "adguard": "exports/adguard/socialnet.txt",
+        "dnsmasq": "exports/dnsmasq/socialnet.conf",
+        "unbound": "exports/unbound/socialnet.conf"
+      }
+    },
+    {
+      "id": "spyware",
+      "domains": 735829,
+      "size": 15846284,
+      "formats": {
+        "domains": "exports/domains/spyware.txt",
+        "hosts": "exports/hosts/spyware.txt",
+        "adguard": "exports/adguard/spyware.txt",
+        "dnsmasq": "exports/dnsmasq/spyware.conf",
+        "unbound": "exports/unbound/spyware.conf"
+      }
+    },
+    {
+      "id": "tracker-drugs",
+      "domains": 26829,
+      "size": 530139,
+      "formats": {
+        "domains": "exports/domains/tracker-drugs.txt",
+        "hosts": "exports/hosts/tracker-drugs.txt",
+        "adguard": "exports/adguard/tracker-drugs.txt",
+        "dnsmasq": "exports/dnsmasq/tracker-drugs.conf",
+        "unbound": "exports/unbound/tracker-drugs.conf"
+      }
+    },
+    {
+      "id": "tracker",
+      "domains": 1486,
+      "size": 27769,
+      "formats": {
+        "domains": "exports/domains/tracker.txt",
+        "hosts": "exports/hosts/tracker.txt",
+        "adguard": "exports/adguard/tracker.txt",
+        "dnsmasq": "exports/dnsmasq/tracker.conf",
+        "unbound": "exports/unbound/tracker.conf"
+      }
+    },
+    {
+      "id": "updatesites",
+      "domains": 415,
+      "size": 8148,
+      "formats": {
+        "domains": "exports/domains/updatesites.txt",
+        "hosts": "exports/hosts/updatesites.txt",
+        "adguard": "exports/adguard/updatesites.txt",
+        "dnsmasq": "exports/dnsmasq/updatesites.conf",
+        "unbound": "exports/unbound/updatesites.conf"
+      }
+    },
+    {
+      "id": "urlshortener",
+      "domains": 5111,
+      "size": 64006,
+      "formats": {
+        "domains": "exports/domains/urlshortener.txt",
+        "hosts": "exports/hosts/urlshortener.txt",
+        "adguard": "exports/adguard/urlshortener.txt",
+        "dnsmasq": "exports/dnsmasq/urlshortener.conf",
+        "unbound": "exports/unbound/urlshortener.conf"
+      }
+    },
+    {
+      "id": "violence",
+      "domains": 235,
+      "size": 4064,
+      "formats": {
+        "domains": "exports/domains/violence.txt",
+        "hosts": "exports/hosts/violence.txt",
+        "adguard": "exports/adguard/violence.txt",
+        "dnsmasq": "exports/dnsmasq/violence.conf",
+        "unbound": "exports/unbound/violence.conf"
+      }
+    },
+    {
+      "id": "warez",
+      "domains": 5714,
+      "size": 98850,
+      "formats": {
+        "domains": "exports/domains/warez.txt",
+        "hosts": "exports/hosts/warez.txt",
+        "adguard": "exports/adguard/warez.txt",
+        "dnsmasq": "exports/dnsmasq/warez.conf",
+        "unbound": "exports/unbound/warez.conf"
+      }
+    },
+    {
+      "id": "weapons",
+      "domains": 507,
+      "size": 9370,
+      "formats": {
+        "domains": "exports/domains/weapons.txt",
+        "hosts": "exports/hosts/weapons.txt",
+        "adguard": "exports/adguard/weapons.txt",
+        "dnsmasq": "exports/dnsmasq/weapons.conf",
+        "unbound": "exports/unbound/weapons.conf"
+      }
+    },
+    {
+      "id": "webmail",
+      "domains": 3729,
+      "size": 62706,
+      "formats": {
+        "domains": "exports/domains/webmail.txt",
+        "hosts": "exports/hosts/webmail.txt",
+        "adguard": "exports/adguard/webmail.txt",
+        "dnsmasq": "exports/dnsmasq/webmail.conf",
+        "unbound": "exports/unbound/webmail.conf"
+      }
+    },
+    {
+      "id": "webphone",
+      "domains": 54,
+      "size": 786,
+      "formats": {
+        "domains": "exports/domains/webphone.txt",
+        "hosts": "exports/hosts/webphone.txt",
+        "adguard": "exports/adguard/webphone.txt",
+        "dnsmasq": "exports/dnsmasq/webphone.conf",
+        "unbound": "exports/unbound/webphone.conf"
+      }
+    },
+    {
+      "id": "webradio",
+      "domains": 3741,
+      "size": 66732,
+      "formats": {
+        "domains": "exports/domains/webradio.txt",
+        "hosts": "exports/hosts/webradio.txt",
+        "adguard": "exports/adguard/webradio.txt",
+        "dnsmasq": "exports/dnsmasq/webradio.conf",
+        "unbound": "exports/unbound/webradio.conf"
+      }
+    },
+    {
+      "id": "webtv",
+      "domains": 4275,
+      "size": 70431,
+      "formats": {
+        "domains": "exports/domains/webtv.txt",
+        "hosts": "exports/hosts/webtv.txt",
+        "adguard": "exports/adguard/webtv.txt",
+        "dnsmasq": "exports/dnsmasq/webtv.conf",
+        "unbound": "exports/unbound/webtv.conf"
+      }
+    }
+  ]
+}

@@ -20,6 +20,9 @@ jobs:
       - name: Export to all formats
         run: bash scripts/export_formats.sh
 
+      - name: Generate manifest.json
+        run: bash scripts/generate_manifest.sh
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"

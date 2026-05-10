@@ -1,8 +1,15 @@
 # Community Blocklists
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Last update](https://img.shields.io/github/last-commit/StbanMc/CommunityBlocklists/main?label=last%20update)](https://github.com/StbanMc/CommunityBlocklists/commits/main/)
+[![Categories](https://img.shields.io/badge/categories-74-orange)](#categories)
+[![Domains](https://img.shields.io/badge/domains-4M%2B-red)](#stats)
+[![Sources](https://img.shields.io/badge/sources-5-purple)](#data-sources)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](CONTRIBUTING.md)
+
 Community-driven URL/domain blocklists organized by category. Compatible with **pfBlockerNG**, **Pi-hole**, **AdGuard Home**, **OPNsense**, **Unbound**, **dnsmasq**, **SquidGuard**, and any DNS-based filtering solution.
 
-> **4,000,000+ domains** across **74 categories**, updated weekly from 5 open sources.
+> **4,000,000+ domains** across **74 categories**, updated weekly from 5 open sources. Programmatic catalogue: [`manifest.json`](manifest.json).
 
 ---
 
@@ -20,11 +27,18 @@ Add as DNS blocklist:
 https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/adguard/<category>.txt
 ```
 
-### pfBlockerNG (pfSense)
-In Firewall > pfBlockerNG > DNSBL > DNSBL Groups:
-```
-https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/domains/<category>.txt
-```
+### pfBlockerNG (pfSense) — step by step
+1. **Firewall** → **pfBlockerNG** → **DNSBL** → **DNSBL Groups** → **+ Add**
+2. **Source URL**:
+   ```
+   https://raw.githubusercontent.com/StbanMc/CommunityBlocklists/main/exports/domains/<category>.txt
+   ```
+3. **Format**: `Auto`
+4. **State**: `ON`
+5. **Frequency**: `Weekly` (matches our update cycle)
+6. Save → go to **pfBlockerNG → Update** → **Reload** → **Force**
+
+Tip: subscribe to specific categories instead of `combined/all-domains.txt`. Easier to revert if a single category blocks something legitimate.
 
 ### OPNsense (Unbound DNS)
 ```
@@ -45,6 +59,22 @@ exports/combined/all-adguard.txt   # AdGuard format
 
 ### SquidGuard (legacy)
 Clone the repo and point SquidGuard to `ListFilter-Squid/BL/`.
+
+### CDN alternative — jsDelivr (better global latency)
+
+GitHub raw is fine for most users. If you are far from US edges or need lower latency, jsDelivr automatically mirrors this repo:
+
+```
+https://cdn.jsdelivr.net/gh/StbanMc/CommunityBlocklists@main/exports/domains/<category>.txt
+https://cdn.jsdelivr.net/gh/StbanMc/CommunityBlocklists@main/exports/hosts/<category>.txt
+https://cdn.jsdelivr.net/gh/StbanMc/CommunityBlocklists@main/exports/adguard/<category>.txt
+```
+
+To pin to a specific release tag instead of `@main` (recommended for production firewalls), replace `@main` with the tag, e.g. `@v2026.05.10`.
+
+### Programmatic catalogue (`manifest.json`)
+
+The full list of categories with sizes, formats and source attribution lives at [`manifest.json`](manifest.json) — useful for tools, dashboards or wrappers that want to discover what is available without scraping the README.
 
 ---
 

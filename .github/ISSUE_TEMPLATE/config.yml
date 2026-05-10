@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/StbanMc/CommunityBlocklists/discussions
+    about: Open-ended questions, ideas, and "how do I…" live in Discussions, not Issues.
+  - name: Security advisories
+    url: https://github.com/StbanMc/CommunityBlocklists/security/advisories/new
+    about: Found a vulnerability or sensitive concern? Report it privately here, not in a public issue.
