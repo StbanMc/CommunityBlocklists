@@ -24,4 +24,6 @@ Project maintainers may remove contributions and ban contributors who violate th
 
 ## Contact
 
-esteban.esquivel@mava.com.co
+Report violations privately by opening a GitHub Security Advisory at
+<https://github.com/StbanMc/CommunityBlocklists/security/advisories/new>,
+or contact the maintainer at `40925832+StbanMc@users.noreply.github.com`.

@@ -61,19 +61,19 @@ exports/combined/all-adguard.txt   # AdGuard format
 
 SquidGuard expects a single `.tar.gz` containing a top-level directory with
 `<category>/domains` (and optional `<category>/urls`) entries. A
-pre-packaged, reproducible tarball is published on every weekly run as a
-GitHub Release asset under the rolling `latest` tag.
+pre-packaged, reproducible tarball is published on every weekly run to
+GitHub Pages as a direct download (no redirects — important for SquidGuard).
 
 1. **Services** → **SquidGuard Proxy Filter** → **Blacklist** tab
 2. **Blacklist URL**:
    ```
-   https://github.com/StbanMc/CommunityBlocklists/releases/latest/download/mavablacklist.tar.gz
+   https://stbanmc.github.io/CommunityBlocklists/squidguard.tar.gz
    ```
 3. Click **Download** and wait for the percentage to reach 100% (the tarball
    is ~30 MB — first download takes 1-2 minutes on a typical pfSense box).
 4. **General settings** tab → make sure **Enable** is on → **Apply**.
 5. **Target categories** tab → the categories you want to act on will appear
-   automatically as `[mavablacklist] <category>`. Set them to **deny**,
+   automatically as `[squidguard] <category>`. Set them to **deny**,
    **allow**, or **whitelist** as needed.
 6. **Common ACL** (or **Groups ACL**) tab → wire categories into your access
    rules → **Apply**.
@@ -82,11 +82,14 @@ GitHub Release asset under the rolling `latest` tag.
    full set — log shows progress).
 
 **Integrity check (optional but recommended):** download
-`mavablacklist.tar.gz.sha256` from the same release and verify before applying
-in production.
+`squidguard.tar.gz.sha256` from the same Pages URL and verify before
+applying in production.
 
-**Rollback:** every previous release tag is kept as `vYYYY.MM.DD`. To pin to
-a specific known-good version, replace `latest` in the URL with the dated tag.
+> **Why Pages and not the GitHub Releases URL?** GitHub Releases serve
+> assets through a signed-redirect chain that the pfSense SquidGuard
+> downloader does not follow correctly (it produces `Bad content. Terminate.`).
+> The Pages URL is a single HTTP 200 with no redirects. The Releases asset is
+> still published in parallel for manual download / versioned audit.
 
 ### CDN alternative — jsDelivr (better global latency)
 
@@ -116,7 +119,7 @@ The full list of categories with sizes, formats and source attribution lives at 
 | dnsmasq | `exports/dnsmasq/` | dnsmasq, OPNsense |
 | Unbound | `exports/unbound/` | Unbound DNS resolver |
 | Combined | `exports/combined/` | All categories merged |
-| SquidGuard tarball | Release asset `mavablacklist.tar.gz` | SquidGuard (pfSense, OPNsense) |
+| SquidGuard tarball | `squidguard.tar.gz` on Pages + Release | SquidGuard (pfSense, OPNsense) |
 | SquidGuard source tree | `ListFilter-Squid/BL/` | Local build / inspection |
 
 ---

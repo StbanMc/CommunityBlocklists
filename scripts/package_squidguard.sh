@@ -3,13 +3,13 @@
 # package_squidguard.sh - Build a SquidGuard-compatible tarball.
 #
 # Produces:
-#   exports/squidguard/mavablacklist.tar.gz        (consumed by SquidGuard)
-#   exports/squidguard/mavablacklist.tar.gz.sha256 (integrity check)
+#   exports/squidguard/squidguard.tar.gz        (consumed by SquidGuard)
+#   exports/squidguard/squidguard.tar.gz.sha256 (integrity check)
 #
 # Structure inside the tarball matches the SquidGuard "Blacklist Update"
 # expectation (same convention as Shalla / URLBlacklist):
 #
-#   mavablacklist/
+#   squidguard/
 #     <category>/
 #       domains
 #       urls
@@ -17,9 +17,8 @@
 #       domains
 #       urls
 #
-# Top-level directory name MUST equal the value SquidGuard uses as `dbhome`
-# basename. Keeping `mavablacklist` preserves backwards compatibility with
-# existing pfSense installs that already point to mava.com.co/pfsense/mavablacklist.gz.
+# The top-level directory name becomes the prefix SquidGuard shows in the
+# UI for target categories, e.g. "[squidguard] porn", "[squidguard] adv".
 #
 # Runs locally and on the GitHub Actions runner. Zero deps beyond coreutils + tar.
 # =============================================================================
@@ -32,7 +31,7 @@ OUT_DIR="$REPO_DIR/exports/squidguard"
 STAGE_DIR="$(mktemp -d)"
 trap 'rm -rf "$STAGE_DIR"' EXIT
 
-PKG_NAME="mavablacklist"
+PKG_NAME="squidguard"
 MIN_CATEGORIES=10  # safety net: refuse to publish a near-empty tarball
 
 echo "=== SquidGuard Tarball Builder ==="

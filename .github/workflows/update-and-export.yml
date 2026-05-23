@@ -30,9 +30,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # exports/squidguard/ contains a binary tarball that is published
-          # as a Release asset (next step) — keep it out of the working tree
-          # to avoid bloating the repo with large binaries on every run.
+          # exports/squidguard/ holds the binary tarball — it is published
+          # via gh-pages (direct download) and as a Release asset (versioned
+          # download). Keep it out of main so the repo does not balloon.
           echo "exports/squidguard/" >> .gitignore
           git add -A
           if git diff --cached --quiet; then
@@ -43,13 +43,62 @@ jobs:
             git push
           fi
 
-      - name: Publish SquidGuard tarball to Release (latest)
+      - name: Publish tarball to gh-pages (direct download)
+        run: |
+          set -euo pipefail
+          TARBALL="exports/squidguard/squidguard.tar.gz"
+          CHECKSUM="${TARBALL}.sha256"
+
+          # Stage the gh-pages content in a clean worktree so we never touch
+          # main's working tree.
+          WT="$(mktemp -d)"
+          git worktree add --orphan -B gh-pages "$WT"
+          find "$WT" -mindepth 1 -maxdepth 1 -not -name '.git' -exec rm -rf {} +
+
+          cp "$TARBALL"  "$WT/squidguard.tar.gz"
+          cp "$CHECKSUM" "$WT/squidguard.tar.gz.sha256"
+          touch "$WT/.nojekyll"
+
+          cat > "$WT/index.html" <<'HTML'
+          <!doctype html>
+          <html lang="en"><head>
+          <meta charset="utf-8">
+          <title>CommunityBlocklists — SquidGuard tarball</title>
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <style>
+            body{font-family:system-ui,-apple-system,sans-serif;max-width:720px;margin:4rem auto;padding:0 1.5rem;line-height:1.6;color:#1a1a1a}
+            h1{font-size:1.6rem;margin-bottom:.3rem}
+            a{color:#0a5dc9}
+            code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem}
+            pre{background:#f5f5f5;padding:1rem;border-radius:6px;overflow-x:auto}
+            .muted{color:#666}
+          </style></head><body>
+          <h1>CommunityBlocklists</h1>
+          <p class="muted">Direct-download mirror for SquidGuard / pfSense.</p>
+          <p>Stable URL for <strong>pfSense &rarr; Services &rarr; SquidGuard Proxy Filter &rarr; Blacklist</strong>:</p>
+          <pre>https://stbanmc.github.io/CommunityBlocklists/squidguard.tar.gz</pre>
+          <p>Integrity check:</p>
+          <pre>https://stbanmc.github.io/CommunityBlocklists/squidguard.tar.gz.sha256</pre>
+          <p>Source repository, other formats (Pi-hole, AdGuard, pfBlockerNG, dnsmasq, Unbound), and contribution guide: <a href="https://github.com/StbanMc/CommunityBlocklists">github.com/StbanMc/CommunityBlocklists</a>.</p>
+          </body></html>
+          HTML
+
+          cd "$WT"
+          git add -A
+          git -c user.name="github-actions[bot]" \
+              -c user.email="github-actions[bot]@users.noreply.github.com" \
+              commit -m "pages: squidguard.tar.gz ($(date -u +%Y-%m-%d))"
+          git push -f origin gh-pages
+          cd -
+          git worktree remove "$WT" --force
+
+      - name: Publish tarball to Release (versioning)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           TAG="latest"
-          TARBALL="exports/squidguard/mavablacklist.tar.gz"
+          TARBALL="exports/squidguard/squidguard.tar.gz"
           CHECKSUM="${TARBALL}.sha256"
 
           if [ ! -f "$TARBALL" ]; then
@@ -57,12 +106,8 @@ jobs:
             exit 1
           fi
 
-          # Recreate the rolling "latest" release so the asset URL stays stable:
-          #   https://github.com/<owner>/<repo>/releases/latest/download/mavablacklist.tar.gz
-          # GitHub treats "latest" by published_at, so re-publishing keeps the
-          # /latest redirect pointing at this release.
+          # Recreate the rolling "latest" release so the asset URL stays stable.
           if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Deleting existing $TAG release to refresh assets..."
             gh release delete "$TAG" --yes --cleanup-tag
           fi
 
@@ -74,9 +119,14 @@ jobs:
             echo "**SHA-256:**    \`$(awk '{print $1}' "$CHECKSUM")\`"
             echo "**Size:**       $(du -h "$TARBALL" | awk '{print $1}')"
             echo ""
-            echo "Use in pfSense / OPNsense → SquidGuard → Blacklist tab:"
+            echo "### Recommended URL for pfSense / OPNsense (direct, no redirects):"
             echo ""
-            echo "    https://github.com/${{ github.repository }}/releases/latest/download/mavablacklist.tar.gz"
+            echo "    https://stbanmc.github.io/CommunityBlocklists/squidguard.tar.gz"
+            echo ""
+            echo "The asset below is also available, but GitHub Releases serve through a"
+            echo "signed-redirect chain that SquidGuard's downloader does not follow well —"
+            echo "prefer the Pages URL above for the firewall, and use the asset here only"
+            echo "for manual download / auditing."
           } > "$NOTES_FILE"
 
           gh release create "$TAG" \
@@ -86,5 +136,3 @@ jobs:
             "$TARBALL" "$CHECKSUM"
 
           rm -f "$NOTES_FILE"
-          echo "Released $TAG with assets:"
-          gh release view "$TAG" --json assets --jq '.assets[].name'

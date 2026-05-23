@@ -6,7 +6,10 @@ If a legitimate domain is incorrectly included in our blocklists, please open an
 
 ## Reporting Malicious Submissions
 
-If you suspect someone has submitted domains with the intent to block legitimate services (e.g., competitors, political targets), please email: esteban.esquivel@mava.com.co
+If you suspect someone has submitted domains with the intent to block
+legitimate services (e.g., competitors, political targets), open a private
+report at <https://github.com/StbanMc/CommunityBlocklists/security/advisories/new>
+or contact the maintainer at `40925832+StbanMc@users.noreply.github.com`.
 
 ## Data Sources
 
