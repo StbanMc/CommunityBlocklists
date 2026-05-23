@@ -23,10 +23,17 @@ jobs:
       - name: Generate manifest.json
         run: bash scripts/generate_manifest.sh
 
+      - name: Package SquidGuard tarball
+        run: bash scripts/package_squidguard.sh
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # exports/squidguard/ contains a binary tarball that is published
+          # as a Release asset (next step) — keep it out of the working tree
+          # to avoid bloating the repo with large binaries on every run.
+          echo "exports/squidguard/" >> .gitignore
           git add -A
           if git diff --cached --quiet; then
             echo "No changes to commit"
@@ -35,3 +42,49 @@ jobs:
             git commit -m "chore: weekly blocklist update ($(date -u +%Y-%m-%d)) - ${DOMAINS} domains"
             git push
           fi
+
+      - name: Publish SquidGuard tarball to Release (latest)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="latest"
+          TARBALL="exports/squidguard/mavablacklist.tar.gz"
+          CHECKSUM="${TARBALL}.sha256"
+
+          if [ ! -f "$TARBALL" ]; then
+            echo "ERROR: tarball not found at $TARBALL" >&2
+            exit 1
+          fi
+
+          # Recreate the rolling "latest" release so the asset URL stays stable:
+          #   https://github.com/<owner>/<repo>/releases/latest/download/mavablacklist.tar.gz
+          # GitHub treats "latest" by published_at, so re-publishing keeps the
+          # /latest redirect pointing at this release.
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Deleting existing $TAG release to refresh assets..."
+            gh release delete "$TAG" --yes --cleanup-tag
+          fi
+
+          NOTES_FILE="$(mktemp)"
+          {
+            echo "Rolling release with the latest SquidGuard-compatible tarball."
+            echo ""
+            echo "**Build date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "**SHA-256:**    \`$(awk '{print $1}' "$CHECKSUM")\`"
+            echo "**Size:**       $(du -h "$TARBALL" | awk '{print $1}')"
+            echo ""
+            echo "Use in pfSense / OPNsense → SquidGuard → Blacklist tab:"
+            echo ""
+            echo "    https://github.com/${{ github.repository }}/releases/latest/download/mavablacklist.tar.gz"
+          } > "$NOTES_FILE"
+
+          gh release create "$TAG" \
+            --title "Latest SquidGuard tarball" \
+            --notes-file "$NOTES_FILE" \
+            --latest \
+            "$TARBALL" "$CHECKSUM"
+
+          rm -f "$NOTES_FILE"
+          echo "Released $TAG with assets:"
+          gh release view "$TAG" --json assets --jq '.assets[].name'

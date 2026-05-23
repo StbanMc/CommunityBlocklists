@@ -57,8 +57,36 @@ exports/combined/all-hosts.txt     # Hosts format
 exports/combined/all-adguard.txt   # AdGuard format
 ```
 
-### SquidGuard (legacy)
-Clone the repo and point SquidGuard to `ListFilter-Squid/BL/`.
+### SquidGuard (pfSense / OPNsense) — step by step
+
+SquidGuard expects a single `.tar.gz` containing a top-level directory with
+`<category>/domains` (and optional `<category>/urls`) entries. A
+pre-packaged, reproducible tarball is published on every weekly run as a
+GitHub Release asset under the rolling `latest` tag.
+
+1. **Services** → **SquidGuard Proxy Filter** → **Blacklist** tab
+2. **Blacklist URL**:
+   ```
+   https://github.com/StbanMc/CommunityBlocklists/releases/latest/download/mavablacklist.tar.gz
+   ```
+3. Click **Download** and wait for the percentage to reach 100% (the tarball
+   is ~30 MB — first download takes 1-2 minutes on a typical pfSense box).
+4. **General settings** tab → make sure **Enable** is on → **Apply**.
+5. **Target categories** tab → the categories you want to act on will appear
+   automatically as `[mavablacklist] <category>`. Set them to **deny**,
+   **allow**, or **whitelist** as needed.
+6. **Common ACL** (or **Groups ACL**) tab → wire categories into your access
+   rules → **Apply**.
+7. **SquidGuard Proxy Filter** → **General settings** → **Apply** at the
+   bottom to recompile the BerkeleyDB indexes (this takes 2-5 minutes for the
+   full set — log shows progress).
+
+**Integrity check (optional but recommended):** download
+`mavablacklist.tar.gz.sha256` from the same release and verify before applying
+in production.
+
+**Rollback:** every previous release tag is kept as `vYYYY.MM.DD`. To pin to
+a specific known-good version, replace `latest` in the URL with the dated tag.
 
 ### CDN alternative — jsDelivr (better global latency)
 
@@ -88,7 +116,8 @@ The full list of categories with sizes, formats and source attribution lives at 
 | dnsmasq | `exports/dnsmasq/` | dnsmasq, OPNsense |
 | Unbound | `exports/unbound/` | Unbound DNS resolver |
 | Combined | `exports/combined/` | All categories merged |
-| SquidGuard | `ListFilter-Squid/BL/` | Legacy SquidGuard |
+| SquidGuard tarball | Release asset `mavablacklist.tar.gz` | SquidGuard (pfSense, OPNsense) |
+| SquidGuard source tree | `ListFilter-Squid/BL/` | Local build / inspection |
 
 ---
 
